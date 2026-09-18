@@ -13,13 +13,13 @@ async function getWeather() {
         // Current weather API
 
         const currentURL =
-            `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=metric`;
+            `/api/weather?city=${encodeURIComponent(city)}`;
 
 
         // 5-day forecast API
 
         const forecastURL =
-            `https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=metric`;
+            `/api/forecast?city=${encodeURIComponent(city)}`;
 
 
         const currentResponse =
