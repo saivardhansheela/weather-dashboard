@@ -1,244 +1,157 @@
+/* ================================
+   WEATHER DASHBOARD
+   PROFESSIONAL STYLING
+================================ */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     min-height: 100vh;
     padding: 40px 20px;
+
+    background:
+        linear-gradient(135deg, #4facfe, #7367f0);
+
     color: #172033;
+
+    transition:
+        background 0.8s ease,
+        color 0.5s ease;
+
     overflow-x: hidden;
-
-    background:
-        linear-gradient(135deg, #38bdf8, #6366f1);
-
-    transition: background 1s ease;
-}
-
-/* Weather Background Effects */
-
-body::before,
-body::after {
-    content: "";
-    position: fixed;
-    pointer-events: none;
-    z-index: -1;
-}
-
-/* Sunny */
-
-body.weather-sunny {
-    background:
-        radial-gradient(circle at 85% 15%,
-        rgba(255, 221, 87, 0.95) 0 90px,
-        rgba(255, 221, 87, 0.25) 160px,
-        transparent 300px),
-        linear-gradient(135deg, #38bdf8, #facc15);
-}
-
-body.weather-sunny::before {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: rgba(255, 235, 120, 0.22);
-    top: -100px;
-    right: -80px;
-    animation: sunPulse 3s infinite alternate;
-}
-
-/* Rain */
-
-body.weather-rain,
-body.weather-drizzle {
-    background:
-        linear-gradient(135deg, #334155, #475569, #1e3a5f);
-}
-
-body.weather-rain::before,
-body.weather-drizzle::before {
-    inset: 0;
-    background-image:
-        repeating-linear-gradient(
-            105deg,
-            transparent 0,
-            transparent 12px,
-            rgba(180, 220, 255, 0.45) 13px,
-            transparent 14px
-        );
-    background-size: 35px 45px;
-    animation: rainFall 0.7s linear infinite;
-}
-
-/* Thunderstorm */
-
-body.weather-storm {
-    background:
-        linear-gradient(135deg, #111827, #312e81, #172554);
-}
-
-body.weather-storm::before {
-    inset: 0;
-    background:
-        repeating-linear-gradient(
-            105deg,
-            transparent 0,
-            transparent 18px,
-            rgba(180, 210, 255, 0.35) 19px,
-            transparent 21px
-        );
-    animation: rainFall 0.5s linear infinite;
-}
-
-body.weather-storm::after {
-    inset: 0;
-    background: rgba(255, 255, 255, 0);
-    animation: lightning 4s infinite;
-}
-
-/* Snow */
-
-body.weather-snow {
-    background:
-        linear-gradient(135deg, #bae6fd, #e0f2fe, #c4b5fd);
-}
-
-body.weather-snow::before {
-    inset: -20px;
-
-    background-image:
-        radial-gradient(circle, white 0 3px, transparent 4px),
-        radial-gradient(circle, white 0 4px, transparent 5px),
-        radial-gradient(circle, white 0 2px, transparent 3px);
-
-    background-size:
-        80px 80px,
-        120px 120px,
-        60px 60px;
-
-    animation: snowFall 7s linear infinite;
-}
-
-/* Clouds */
-
-body.weather-clouds {
-    background:
-        linear-gradient(135deg, #94a3b8, #cbd5e1, #64748b);
-}
-
-/* Fog */
-
-body.weather-fog {
-    background:
-        linear-gradient(135deg, #94a3b8, #e2e8f0);
-}
-
-body.weather-fog::before {
-    inset: 0;
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,0.45),
-            transparent
-        );
-    animation: fogMove 6s linear infinite;
 }
 
 
-/* Main Container */
+/* =================================
+   MAIN CONTAINER
+================================= */
 
 .weather-container {
     width: 100%;
     max-width: 1000px;
     margin: auto;
-    padding: 40px;
 
-    background: rgba(255, 255, 255, 0.95);
+    padding: 35px;
 
-    border: 1px solid rgba(255,255,255,0.7);
-    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.94);
+
+    border: 1px solid rgba(255, 255, 255, 0.5);
+
+    border-radius: 28px;
 
     box-shadow:
-        0 25px 70px rgba(0,0,0,0.25);
+        0 25px 60px rgba(0, 0, 0, 0.20);
 
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(12px);
+
+    animation: containerEnter 0.8s ease;
+}
+
+@keyframes containerEnter {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
-/* Header */
+/* =================================
+   HEADER
+================================= */
 
 .weather-container > h1 {
     text-align: center;
 
     font-size: 38px;
+
     margin-bottom: 30px;
 
-    background: linear-gradient(
-        90deg,
-        #2563eb,
-        #7c3aed
-    );
+    color: #18213b;
 
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    letter-spacing: -1px;
 }
 
 
-/* Search */
+/* =================================
+   SEARCH BOX
+================================= */
 
 .search-box {
     display: flex;
+
     gap: 12px;
+
     margin-bottom: 30px;
 }
 
 .search-box input {
     flex: 1;
 
-    padding: 17px 20px;
+    padding: 16px 18px;
 
     border: 2px solid #e5e7eb;
-    border-radius: 14px;
 
-    background: #f8fafc;
+    border-radius: 14px;
 
     font-size: 16px;
 
+    color: #222;
+
+    background: white;
+
     outline: none;
 
-    transition: 0.25s;
+    transition: 0.3s;
 }
 
 .search-box input:focus {
-    border-color: #6366f1;
+    border-color: #667eea;
 
     box-shadow:
-        0 0 0 4px rgba(99,102,241,0.12);
+        0 0 0 4px rgba(102, 126, 234, 0.12);
 }
 
 
-/* Rocket Search Button */
+/* =================================
+   SEARCH BUTTON
+================================= */
 
 .search-box button {
+
     position: relative;
 
-    padding: 17px 30px;
+    padding: 16px 28px;
 
     border: none;
+
     border-radius: 14px;
 
     background:
         linear-gradient(
             135deg,
-            #4f46e5,
-            #7c3aed
+            #667eea,
+            #764ba2
         );
 
     color: white;
 
     font-size: 16px;
+
     font-weight: bold;
 
     cursor: pointer;
@@ -246,71 +159,166 @@ body.weather-fog::before {
     overflow: hidden;
 
     box-shadow:
-        0 8px 20px rgba(79,70,229,0.3);
+        0 8px 20px rgba(102, 126, 234, 0.35);
 
-    transition: 0.25s;
+    transition: 0.3s;
 }
 
 .search-box button:hover {
-    transform: translateY(-3px);
+
+    transform:
+        translateY(-3px)
+        scale(1.03);
 
     box-shadow:
-        0 14px 30px rgba(79,70,229,0.4);
+        0 12px 28px rgba(102, 126, 234, 0.45);
 }
 
-.search-box button.launch {
-    animation: rocketLaunch 0.7s ease;
+.search-box button:active {
+
+    transform:
+        translateY(1px)
+        scale(0.97);
 }
 
 
-/* Current Weather */
+/* Rocket-style shine */
+
+.search-box button::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.45),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    animation: buttonShine 2.5s infinite;
+}
+
+@keyframes buttonShine {
+
+    0% {
+        left: -100%;
+    }
+
+    45%,
+    100% {
+        left: 150%;
+    }
+}
+
+
+/* =================================
+   CURRENT WEATHER
+================================= */
 
 .weather-result {
-    padding: 32px;
 
-    margin-bottom: 35px;
+    padding: 35px;
 
-    text-align: center;
+    border-radius: 24px;
 
     background:
         linear-gradient(
             135deg,
-            #eff6ff,
-            #f5f3ff
+            #eef5ff,
+            #f7f4ff
         );
-
-    border: 1px solid #e0e7ff;
-
-    border-radius: 24px;
 
     box-shadow:
-        0 10px 30px rgba(30,41,59,0.08);
+        0 10px 30px rgba(0, 0, 0, 0.08);
+
+    text-align: center;
+
+    animation: weatherAppear 0.7s ease;
 }
+
+@keyframes weatherAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* City */
 
 #cityName {
-    font-size: 30px;
-    margin-bottom: 18px;
+
+    font-size: 32px;
+
+    margin-bottom: 20px;
+
+    color: #202842;
 }
+
+
+/* Weather icon */
 
 .weather-icon {
-    font-size: 82px;
-    margin: 8px 0 12px;
 
-    filter:
-        drop-shadow(
-            0 8px 10px rgba(0,0,0,0.12)
-        );
+    font-size: 85px;
+
+    margin: 15px 0;
+
+    animation:
+        floatingIcon 3s ease-in-out infinite;
 }
+
+@keyframes floatingIcon {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+
+/* Temperature */
 
 #temperature {
-    font-size: 64px;
+
+    font-size: 68px;
+
     font-weight: 700;
-    margin-bottom: 5px;
+
+    color: #202842;
+
+    margin: 10px 0;
 }
 
+
+/* Description */
+
 #description {
+
     font-size: 18px;
-    color: #64748b;
+
+    color: #697386;
 
     text-transform: capitalize;
 
@@ -318,77 +326,97 @@ body.weather-fog::before {
 }
 
 
-/* Details */
+/* =================================
+   WEATHER DETAILS
+================================= */
 
 .weather-details {
+
     display: grid;
 
     grid-template-columns:
         repeat(3, 1fr);
 
-    gap: 16px;
+    gap: 18px;
 }
 
+
+/* Individual detail */
+
 .detail {
-    padding: 20px 15px;
 
-    background: rgba(255,255,255,0.9);
+    padding: 22px 15px;
 
-    border: 1px solid #e5e7eb;
+    background: rgba(255,255,255,0.85);
 
     border-radius: 18px;
 
-    text-align: center;
-
     box-shadow:
-        0 6px 18px rgba(15,23,42,0.06);
+        0 6px 18px rgba(0,0,0,0.07);
 
-    transition: 0.25s;
+    transition: 0.3s;
 }
 
 .detail:hover {
-    transform: translateY(-5px);
+
+    transform:
+        translateY(-6px);
 
     box-shadow:
-        0 12px 25px rgba(15,23,42,0.12);
+        0 12px 25px rgba(0,0,0,0.12);
 }
 
 .detail span {
+
     display: block;
-    font-size: 28px;
+
+    font-size: 30px;
+
     margin-bottom: 8px;
 }
 
 .detail p {
-    color: #64748b;
-    font-size: 14px;
-    margin-bottom: 8px;
+
+    color: #777;
+
+    margin-bottom: 7px;
+
+    font-size: 15px;
 }
 
 .detail strong {
+
     font-size: 20px;
+
+    color: #222;
 }
 
 
-/* 5 Day Forecast */
+/* =================================
+   FORECAST SECTION
+================================= */
 
 .forecast-section {
-    width: 100%;
-    margin-top: 10px;
+
+    margin-top: 35px;
+
+    padding-top: 10px;
 }
 
 .forecast-section h2 {
-    font-size: 26px;
 
-    text-align: center;
+    font-size: 26px;
 
     margin-bottom: 20px;
 
-    color: #1e293b;
+    color: #202842;
 }
 
+
+/* Forecast cards container */
+
+#forecastContainer,
 .forecast-container {
-    width: 100%;
 
     display: grid;
 
@@ -396,62 +424,105 @@ body.weather-fog::before {
         repeat(5, 1fr);
 
     gap: 14px;
+
+    width: 100%;
 }
 
+
+/* Individual forecast card */
+
 .forecast-card {
+
     padding: 20px 12px;
 
     text-align: center;
 
     background:
-        linear-gradient(
-            180deg,
-            #ffffff,
-            #f8fafc
-        );
-
-    border: 1px solid #e5e7eb;
+        rgba(255,255,255,0.9);
 
     border-radius: 18px;
 
     box-shadow:
-        0 6px 18px rgba(15,23,42,0.06);
+        0 6px 18px rgba(0,0,0,0.07);
 
-    transition: 0.25s;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+    animation:
+        forecastAppear 0.6s ease;
 }
 
 .forecast-card:hover {
-    transform: translateY(-7px);
 
-    border-color: #a5b4fc;
+    transform:
+        translateY(-8px);
 
     box-shadow:
-        0 15px 30px rgba(79,70,229,0.15);
+        0 15px 30px rgba(0,0,0,0.12);
 }
 
+@keyframes forecastAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
 .forecast-day {
-    font-size: 15px;
+
     font-weight: bold;
 
-    color: #475569;
+    font-size: 15px;
 
     margin-bottom: 12px;
+
+    color: #4b5563;
 }
 
 .forecast-icon {
-    font-size: 40px;
-    margin-bottom: 12px;
+
+    font-size: 38px;
+
+    margin-bottom: 10px;
+
+    animation:
+        forecastFloat 3s ease-in-out infinite;
+}
+
+@keyframes forecastFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
 }
 
 .forecast-temp {
+
     font-size: 19px;
+
     font-weight: bold;
+
+    color: #202842;
 }
 
 .forecast-desc {
+
     font-size: 12px;
 
-    color: #64748b;
+    color: #777;
 
     margin-top: 8px;
 
@@ -461,130 +532,20 @@ body.weather-fog::before {
 }
 
 
-/* Animations */
+/* =================================
+   SUNNY WEATHER BACKGROUND
+================================= */
 
-@keyframes sunPulse {
-    from {
-        transform: scale(0.9);
-        opacity: 0.7;
-    }
+body.sunny {
 
-    to {
-        transform: scale(1.15);
-        opacity: 1;
-    }
-}
-
-@keyframes rainFall {
-    from {
-        transform: translateY(-45px);
-    }
-
-    to {
-        transform: translateY(45px);
-    }
-}
-
-@keyframes snowFall {
-    from {
-        transform: translateY(-80px);
-    }
-
-    to {
-        transform: translateY(100px);
-    }
-}
-
-@keyframes lightning {
-    0%, 90%, 100% {
-        background: rgba(255,255,255,0);
-    }
-
-    92% {
-        background: rgba(255,255,255,0.35);
-    }
-
-    94% {
-        background: rgba(255,255,255,0);
-    }
-}
-
-@keyframes fogMove {
-    from {
-        transform: translateX(-20%);
-    }
-
-    to {
-        transform: translateX(20%);
-    }
-}
-
-@keyframes rocketLaunch {
-
-    0% {
-        transform: translateY(0) scale(1);
-    }
-
-    35% {
-        transform: translateY(-5px) scale(1.05);
-    }
-
-    70% {
-        transform: translateY(-18px) scale(0.98);
-    }
-
-    100% {
-        transform: translateY(0) scale(1);
-    }
-}
-
-
-/* Mobile */
-
-@media (max-width: 700px) {
-
-    body {
-        padding: 15px 10px;
-    }
-
-    .weather-container {
-        padding: 22px 16px;
-        border-radius: 22px;
-    }
-
-    .weather-container > h1 {
-        font-size: 28px;
-    }
-
-    .search-box {
-        flex-direction: column;
-    }
-
-    .search-box button {
-        width: 100%;
-    }
-
-    .weather-result {
-        padding: 24px 16px;
-    }
-
-    #temperature {
-        font-size: 50px;
-    }
-
-    .weather-details {
-        grid-template-columns: 1fr;
-    }
-
-    .forecast-container {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 400px) {
-
-    .forecast-container {
-        grid-template-columns: 1fr;
-    }
-}
+    background:
+        radial-gradient(
+            circle at 80% 15%,
+            #fff59d 0%,
+            #ffd54f 8%,
+            transparent 22%
+        ),
+        linear-gradient(
+            135deg,
+            #56ccf2,
+            #f2c94
