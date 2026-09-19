@@ -8,25 +8,14 @@ async function getWeather() {
         return;
     }
 
-    // Rocket animation
-    const searchButton =
-        document.querySelector(".search-box button");
-
-    searchButton.classList.remove("launch");
-
-    void searchButton.offsetWidth;
-
-    searchButton.classList.add("launch");
-
-
     try {
+
+        /* =================================
+           CURRENT WEATHER
+        ================================= */
 
         const currentURL =
             `/api/weather?city=${encodeURIComponent(city)}`;
-
-        const forecastURL =
-            `/api/forecast?city=${encodeURIComponent(city)}`;
-
 
         const currentResponse =
             await fetch(currentURL);
@@ -34,15 +23,19 @@ async function getWeather() {
         const currentData =
             await currentResponse.json();
 
-
         if (!currentResponse.ok) {
-
             throw new Error(
                 currentData.message || "City not found"
             );
-
         }
 
+
+        /* =================================
+           FORECAST
+        ================================= */
+
+        const forecastURL =
+            `/api/forecast?city=${encodeURIComponent(city)}`;
 
         const forecastResponse =
             await fetch(forecastURL);
@@ -50,48 +43,76 @@ async function getWeather() {
         const forecastData =
             await forecastResponse.json();
 
-
         if (!forecastResponse.ok) {
-
             throw new Error(
-                forecastData.message ||
-                "Forecast unavailable"
+                forecastData.message || "Forecast unavailable"
             );
-
         }
 
 
-        /* Current Weather */
+        /* =================================
+           CURRENT WEATHER DETAILS
+        ================================= */
 
-        document.getElementById("cityName").textContent =
-            currentData.name;
+        const cityName =
+            document.getElementById("cityName");
+
+        const temperature =
+            document.getElementById("temperature");
+
+        const description =
+            document.getElementById("description");
+
+        const humidity =
+            document.getElementById("humidity");
+
+        const wind =
+            document.getElementById("wind");
+
+        const feelsLike =
+            document.getElementById("feelsLike");
+
+        const weatherIcon =
+            document.getElementById("weatherIcon");
 
 
-        document.getElementById("temperature").textContent =
-            `${Math.round(currentData.main.temp)}°C`;
+        if (cityName) {
+            cityName.textContent =
+                currentData.name;
+        }
+
+        if (temperature) {
+            temperature.textContent =
+                `${Math.round(currentData.main.temp)}°C`;
+        }
+
+        if (description) {
+            description.textContent =
+                currentData.weather[0].description;
+        }
+
+        if (humidity) {
+            humidity.textContent =
+                `${currentData.main.humidity}%`;
+        }
+
+        if (wind) {
+            wind.textContent =
+                `${(currentData.wind.speed * 3.6).toFixed(1)} km/h`;
+        }
+
+        if (feelsLike) {
+            feelsLike.textContent =
+                `${Math.round(currentData.main.feels_like)}°C`;
+        }
 
 
-        document.getElementById("description").textContent =
-            currentData.weather[0].description;
-
-
-        document.getElementById("humidity").textContent =
-            `${currentData.main.humidity}%`;
-
-
-        document.getElementById("wind").textContent =
-            `${(currentData.wind.speed * 3.6).toFixed(1)} km/h`;
-
-
-        document.getElementById("feelsLike").textContent =
-            `${Math.round(currentData.main.feels_like)}°C`;
-
-
-        /* Weather Icon */
+        /* =================================
+           WEATHER ICON
+        ================================= */
 
         const condition =
             currentData.weather[0].main;
-
 
         const icons = {
 
@@ -116,290 +137,66 @@ async function getWeather() {
         };
 
 
-        document.getElementById("weatherIcon").textContent =
-            icons[condition] || "🌤️";
+        if (weatherIcon) {
+
+            weatherIcon.textContent =
+                icons[condition] || "🌤️";
+        }
 
 
-        /* Dynamic Background */
+        /* =================================
+           DYNAMIC WEATHER BACKGROUND
+        ================================= */
 
-        setWeatherBackground(condition);
-
-
-        /* Forecast */
-
-        createForecast(
-            forecastData.list
-        );
-
-    }
-
-    catch (error) {
-
-        console.error(error);
-
-        alert(
-            "Error: " + error.message
-        );
-
-    }
-}
-
-
-/* Dynamic Weather Background */
-
-function setWeatherBackground(condition) {
-
-    document.body.classList.remove(
-        "weather-sunny",
-        "weather-clouds",
-        "weather-rain",
-        "weather-drizzle",
-        "weather-storm",
-        "weather-snow",
-        "weather-fog"
-    );
-
-
-    if (condition === "Clear") {
-
-        document.body.classList.add(
-            "weather-sunny"
-        );
-
-    }
-
-    else if (condition === "Clouds") {
-
-        document.body.classList.add(
-            "weather-clouds"
-        );
-
-    }
-
-    else if (condition === "Rain") {
-
-        document.body.classList.add(
-            "weather-rain"
-        );
-
-    }
-
-    else if (condition === "Drizzle") {
-
-        document.body.classList.add(
-            "weather-drizzle"
-        );
-
-    }
-
-    else if (condition === "Thunderstorm") {
-
-        document.body.classList.add(
-            "weather-storm"
-        );
-
-    }
-
-    else if (condition === "Snow") {
-
-        document.body.classList.add(
-            "weather-snow"
-        );
-
-    }
-
-    else if (
-        condition === "Mist" ||
-        condition === "Fog" ||
-        condition === "Haze"
-    ) {
-
-        document.body.classList.add(
-            "weather-fog"
-        );
-
-    }
-
-    else {
-
-        document.body.classList.add(
-            "weather-clouds"
-        );
-
-    }
-}
-
-
-/* 5-Day Forecast */
-
-function createForecast(forecastList) {
-
-    const container =
-        document.getElementById(
-            "forecastContainer"
+        document.body.classList.remove(
+            "sunny",
+            "cloudy",
+            "rainy",
+            "stormy",
+            "snowy"
         );
 
 
-    if (!container) {
+        if (condition === "Clear") {
 
-        console.error(
-            "forecastContainer not found"
-        );
+            document.body.classList.add("sunny");
 
-        return;
-    }
+        }
 
+        else if (
+            condition === "Rain" ||
+            condition === "Drizzle"
+        ) {
 
-    container.innerHTML = "";
+            document.body.classList.add("rainy");
 
+        }
 
-    const dailyForecast = {};
+        else if (condition === "Thunderstorm") {
 
+            document.body.classList.add("stormy");
 
-    forecastList.forEach(item => {
+        }
 
-        const date =
-            new Date(item.dt * 1000);
+        else if (condition === "Snow") {
 
-        const dateKey =
-            date.toISOString()
-                .split("T")[0];
+            document.body.classList.add("snowy");
 
+        }
 
-        if (!dailyForecast[dateKey]) {
+        else if (
+            condition === "Clouds" ||
+            condition === "Mist" ||
+            condition === "Haze" ||
+            condition === "Fog"
+        ) {
 
-            dailyForecast[dateKey] = [];
+            document.body.classList.add("cloudy");
 
         }
 
 
-        dailyForecast[dateKey].push(item);
+        /* =================================
+           5-DAY FORECAST
+        ================================= */
 
-    });
-
-
-    const days =
-        Object.values(dailyForecast)
-            .slice(0, 5);
-
-
-    days.forEach(day => {
-
-        const midday =
-            day.reduce(
-                (closest, item) => {
-
-                    const hour =
-                        new Date(
-                            item.dt * 1000
-                        ).getHours();
-
-
-                    const closestHour =
-                        new Date(
-                            closest.dt * 1000
-                        ).getHours();
-
-
-                    return Math.abs(hour - 12) <
-                        Math.abs(closestHour - 12)
-                        ? item
-                        : closest;
-
-                }
-            );
-
-
-        const date =
-            new Date(
-                midday.dt * 1000
-            );
-
-
-        const dayName =
-            date.toLocaleDateString(
-                "en-US",
-                {
-                    weekday: "short"
-                }
-            );
-
-
-        const temperature =
-            Math.round(
-                midday.main.temp
-            );
-
-
-        const description =
-            midday.weather[0].description;
-
-
-        const condition =
-            midday.weather[0].main;
-
-
-        const iconMap = {
-
-            Clear: "☀️",
-
-            Clouds: "☁️",
-
-            Rain: "🌧️",
-
-            Drizzle: "🌦️",
-
-            Thunderstorm: "⛈️",
-
-            Snow: "❄️",
-
-            Mist: "🌫️",
-
-            Haze: "🌫️",
-
-            Fog: "🌫️"
-
-        };
-
-
-        const icon =
-            iconMap[condition] ||
-            "🌤️";
-
-
-        const card =
-            document.createElement(
-                "div"
-            );
-
-
-        card.className =
-            "forecast-card";
-
-
-        card.innerHTML = `
-
-            <div class="forecast-day">
-                ${dayName}
-            </div>
-
-            <div class="forecast-icon">
-                ${icon}
-            </div>
-
-            <div class="forecast-temp">
-                ${temperature}°C
-            </div>
-
-            <div class="forecast-desc">
-                ${description}
-            </div>
-
-        `;
-
-
-        container.appendChild(card);
-
-    });
-
-}
