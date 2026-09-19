@@ -1,64 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Weather Dashboard</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 </head>
 
 <body>
 
     <div class="weather-container">
 
-        <h1>🌦️ Weather Dashboard</h1>
+        <!-- Header -->
+
+        <h1>
+            🌦️ Weather Dashboard
+        </h1>
+
+
+        <!-- Search -->
 
         <div class="search-box">
-            <input 
-                type="text" 
-                id="cityInput" 
+
+            <input
+                type="text"
+                id="cityInput"
                 placeholder="Enter city name"
             >
 
             <button onclick="getWeather()">
                 Search
             </button>
+
         </div>
 
-        <div id="weatherResult" class="weather-result">
 
-            <h2 id="cityName">Search for a city</h2>
+        <!-- Current Weather -->
 
-            <div class="weather-icon" id="weatherIcon">
+        <div
+            id="weatherResult"
+            class="weather-result"
+        >
+
+            <h2 id="cityName">
+                Search for a city
+            </h2>
+
+
+            <div
+                class="weather-icon"
+                id="weatherIcon"
+            >
                 🌤️
             </div>
 
-            <h3 id="temperature">--°C</h3>
 
-            <p id="description">Weather information will appear here</p>
+            <h3 id="temperature">
+                --°C
+            </h3>
+
+
+            <p id="description">
+                Weather information will appear here
+            </p>
+
+
+            <!-- Weather Details -->
 
             <div class="weather-details">
 
-                <div class="detail">
-                    <span>💧</span>
-                    <p>Humidity</p>
-                    <strong id="humidity">--%</strong>
-                </div>
+
+                <!-- Humidity -->
 
                 <div class="detail">
-                    <span>💨</span>
-                    <p>Wind Speed</p>
-                    <strong id="wind">-- km/h</strong>
+
+                    <span>💧</span>
+
+                    <p>
+                        Humidity
+                    </p>
+
+                    <strong id="humidity">
+                        --%
+                    </strong>
+
                 </div>
+
+
+                <!-- Wind -->
+
+                <div class="detail">
+
+                    <span>💨</span>
+
+                    <p>
+                        Wind Speed
+                    </p>
+
+                    <strong id="wind">
+                        -- km/h
+                    </strong>
+
+                </div>
+
+
+                <!-- Feels Like -->
+
+                <div class="detail">
+
+                    <span>🌡️</span>
+
+                    <p>
+                        Feels Like
+                    </p>
+
+                    <strong id="feelsLike">
+                        --°C
+                    </strong>
+
+                </div>
+
 
             </div>
 
         </div>
 
+
+        <!-- 5-Day Forecast -->
+
+        <div class="forecast-section">
+
+            <h2>
+                5-Day Forecast
+            </h2>
+
+
+            <div
+                id="forecastContainer"
+                class="forecast-container"
+            >
+            </div>
+
+        </div>
+
+
     </div>
+
+
+    <!-- JavaScript -->
 
     <script src="script.js"></script>
 
 </body>
+
 </html>
