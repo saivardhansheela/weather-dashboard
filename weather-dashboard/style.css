@@ -14,14 +14,38 @@ html {
 
 body {
     min-height: 100vh;
-    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    color: #f8fbff;
-    background:
-        radial-gradient(circle at top left, rgba(59, 130, 246, 0.28), transparent 35%),
-        radial-gradient(circle at bottom right, rgba(14, 165, 233, 0.22), transparent 35%),
-        linear-gradient(135deg, #07111f, #0b1d34 50%, #102a46);
 
-    transition: background 1s ease-in-out;
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    color: #f8fbff;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(59, 130, 246, 0.28),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(14, 165, 233, 0.22),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #07111f,
+            #0b1d34 50%,
+            #102a46
+        );
+
+    transition:
+        background 1s ease-in-out;
+
     overflow-x: hidden;
 }
 
@@ -32,33 +56,82 @@ body {
 
 body.sunny {
     background:
-        radial-gradient(circle at 20% 10%, rgba(255, 193, 7, 0.38), transparent 32%),
-        radial-gradient(circle at 85% 80%, rgba(255, 140, 0, 0.25), transparent 35%),
-        linear-gradient(135deg, #071827, #174b68, #b45309);
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(255, 193, 7, 0.38),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(255, 140, 0, 0.25),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #071827,
+            #174b68,
+            #b45309
+        );
 }
 
 body.cloudy {
     background:
-        radial-gradient(circle at 20% 20%, rgba(148, 163, 184, 0.3), transparent 35%),
-        linear-gradient(135deg, #0b1726, #243447, #34495e);
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(148, 163, 184, 0.3),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #0b1726,
+            #243447,
+            #34495e
+        );
 }
 
 body.rainy {
     background:
-        radial-gradient(circle at 70% 20%, rgba(59, 130, 246, 0.25), transparent 35%),
-        linear-gradient(135deg, #050d18, #10243b, #193653);
+        radial-gradient(
+            circle at 70% 20%,
+            rgba(59, 130, 246, 0.25),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #050d18,
+            #10243b,
+            #193653
+        );
 }
 
 body.stormy {
     background:
-        radial-gradient(circle at 50% 10%, rgba(139, 92, 246, 0.3), transparent 35%),
-        linear-gradient(135deg, #080b18, #171a35, #28204d);
+        radial-gradient(
+            circle at 50% 10%,
+            rgba(139, 92, 246, 0.3),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #080b18,
+            #171a35,
+            #28204d
+        );
 }
 
 body.snowy {
     background:
-        radial-gradient(circle at 50% 10%, rgba(186, 230, 253, 0.3), transparent 35%),
-        linear-gradient(135deg, #071522, #183247, #28536b);
+        radial-gradient(
+            circle at 50% 10%,
+            rgba(186, 230, 253, 0.3),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #071522,
+            #183247,
+            #28536b
+        );
 }
 
 
@@ -67,11 +140,16 @@ body.snowy {
 ========================================= */
 
 .weather-container {
-    width: min(1100px, calc(100% - 32px));
+    width: min(
+        1100px,
+        calc(100% - 32px)
+    );
+
     margin: 40px auto;
 
     display: flex;
     flex-direction: column;
+
     gap: 24px;
 }
 
@@ -84,12 +162,14 @@ body.snowy {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     padding: 4px;
 }
 
 .brand {
     display: flex;
     align-items: center;
+
     gap: 14px;
 }
 
@@ -102,31 +182,42 @@ body.snowy {
 
     border-radius: 16px;
 
-    background: rgba(255, 255, 255, 0.09);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background:
+        rgba(255, 255, 255, 0.09);
 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.18);
 
     font-size: 26px;
 
-    animation: floatingIcon 4s ease-in-out infinite;
+    animation:
+        floatingIcon 4s ease-in-out infinite;
 }
 
 .brand h1 {
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size:
+        clamp(1.5rem, 3vw, 2rem);
+
     font-weight: 750;
+
     letter-spacing: -0.7px;
 }
 
 .brand p {
     margin-top: 3px;
-    color: rgba(226, 232, 240, 0.65);
+
+    color:
+        rgba(226, 232, 240, 0.65);
+
     font-size: 0.88rem;
 }
 
 
 /* =========================================
-   SEARCH
+   SEARCH SECTION
 ========================================= */
 
 .search-section {
@@ -135,50 +226,66 @@ body.snowy {
 
 .search-box {
     width: 100%;
+
     min-height: 70px;
 
     display: flex;
     align-items: center;
+
     gap: 12px;
 
     padding: 9px;
 
     border-radius: 22px;
 
-    background: rgba(255, 255, 255, 0.075);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background:
+        rgba(255, 255, 255, 0.075);
 
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.2);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
 }
 
 .search-icon {
     width: 46px;
+
     display: grid;
     place-items: center;
 
     font-size: 28px;
-    color: rgba(255, 255, 255, 0.65);
+
+    color:
+        rgba(255, 255, 255, 0.65);
 }
 
 .search-box input {
     flex: 1;
+
     min-width: 0;
 
     border: none;
     outline: none;
 
     background: transparent;
+
     color: white;
 
     font-size: 1rem;
+
     padding: 14px 4px;
 }
 
 .search-box input::placeholder {
-    color: rgba(226, 232, 240, 0.48);
+    color:
+        rgba(226, 232, 240, 0.48);
 }
 
 
@@ -190,92 +297,125 @@ body.snowy {
     position: relative;
 
     min-width: 130px;
+
     height: 52px;
 
     border: none;
+
     border-radius: 15px;
 
     cursor: pointer;
+
     overflow: hidden;
 
     color: white;
 
     font-size: 0.96rem;
+
     font-weight: 700;
 
-    background: linear-gradient(135deg, #38bdf8, #2563eb);
+    background:
+        linear-gradient(
+            135deg,
+            #38bdf8,
+            #2563eb
+        );
 
-    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+    box-shadow:
+        0 10px 25px
+        rgba(37, 99, 235, 0.35);
 
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
 .search-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 14px 30px rgba(37, 99, 235, 0.48);
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 14px 30px
+        rgba(37, 99, 235, 0.48);
 }
 
 .search-button:active {
-    transform: scale(0.96);
+    transform:
+        scale(0.96);
 }
 
 .button-text {
     position: relative;
+
     z-index: 2;
 }
 
 
 /* =========================================
-   ROCKET
+   ROCKET 🚀
 ========================================= */
 
 .rocket {
-    position: fixed;
+    position: absolute;
 
-    right: 30px;
-    bottom: 25px;
+    left: 50%;
+    top: 50%;
 
-    font-size: 45px;
+    transform:
+        translate(-50%, 80px);
 
-    z-index: 99999;
+    font-size: 32px;
+
+    z-index: 10;
 
     opacity: 0;
 
     pointer-events: none;
 }
 
-
-/* Rocket animation triggered by JavaScript */
-
 .rocket.launch {
-    animation: rocketLaunch 3s ease-in-out forwards;
+    animation:
+        rocketLaunch 1.5s
+        ease-in-out
+        forwards;
 }
 
 @keyframes rocketLaunch {
 
     0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
+        opacity: 0;
+
+        transform:
+            translate(-50%, 80px)
+            rotate(0deg);
     }
 
-    20% {
-        transform: translateY(-70px) rotate(-5deg);
+    15% {
         opacity: 1;
     }
 
     50% {
-        transform: translateY(-220px) rotate(-10deg);
         opacity: 1;
+
+        transform:
+            translate(-50%, -40px)
+            rotate(-8deg);
     }
 
     75% {
-        transform: translateY(-400px) rotate(-15deg);
-        opacity: 0.8;
+        opacity: 1;
+
+        transform:
+            translate(-50%, -100px)
+            rotate(-12deg);
     }
 
     100% {
-        transform: translateY(-700px) rotate(-20deg);
         opacity: 0;
+
+        transform:
+            translate(-50%, -180px)
+            rotate(-18deg);
     }
 }
 
@@ -289,6 +429,7 @@ body.snowy {
 
     display: flex;
     flex-direction: column;
+
     gap: 22px;
 
     padding: 30px;
@@ -302,14 +443,21 @@ body.snowy {
             rgba(255, 255, 255, 0.055)
         );
 
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    border:
+        1px solid rgba(255, 255, 255, 0.14);
 
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+    box-shadow:
+        0 25px 70px
+        rgba(0, 0, 0, 0.25);
 
-    backdrop-filter: blur(22px);
-    -webkit-backdrop-filter: blur(22px);
+    backdrop-filter:
+        blur(22px);
+
+    -webkit-backdrop-filter:
+        blur(22px);
 
     overflow: hidden;
+
     position: relative;
 }
 
@@ -326,7 +474,8 @@ body.snowy {
 
     border-radius: 50%;
 
-    background: rgba(56, 189, 248, 0.12);
+    background:
+        rgba(56, 189, 248, 0.12);
 
     filter: blur(5px);
 
@@ -341,6 +490,7 @@ body.snowy {
 .location-info {
     display: flex;
     align-items: center;
+
     gap: 12px;
 }
 
@@ -353,7 +503,8 @@ body.snowy {
 
     border-radius: 14px;
 
-    background: rgba(56, 189, 248, 0.12);
+    background:
+        rgba(56, 189, 248, 0.12);
 
     font-size: 19px;
 }
@@ -361,17 +512,22 @@ body.snowy {
 .location-label {
     margin-bottom: 3px;
 
-    color: rgba(186, 230, 253, 0.65);
+    color:
+        rgba(186, 230, 253, 0.65);
 
     font-size: 0.75rem;
+
     font-weight: 700;
 
     letter-spacing: 1.4px;
+
     text-transform: uppercase;
 }
 
 .location-info h2 {
-    font-size: clamp(1.35rem, 3vw, 1.8rem);
+    font-size:
+        clamp(1.35rem, 3vw, 1.8rem);
+
     font-weight: 700;
 }
 
@@ -388,7 +544,8 @@ body.snowy {
 
     padding: 4px 0 8px;
 
-    animation: weatherFloat 0.8s ease;
+    animation:
+        weatherFloat 0.8s ease;
 }
 
 .weather-icon {
@@ -402,20 +559,28 @@ body.snowy {
 
     border-radius: 32px;
 
-    background: rgba(255, 255, 255, 0.075);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background:
+        rgba(255, 255, 255, 0.075);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.1);
 
     font-size: 72px;
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.08),
-        0 20px 45px rgba(0, 0, 0, 0.15);
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.08),
+        0 20px 45px
+        rgba(0, 0, 0, 0.15);
 
-    animation: floatingIcon 3s ease-in-out infinite;
+    animation:
+        floatingIcon 3s
+        ease-in-out infinite;
 }
 
 .temperature-area h3 {
-    font-size: clamp(4rem, 10vw, 6.5rem);
+    font-size:
+        clamp(4rem, 10vw, 6.5rem);
 
     line-height: 0.95;
 
@@ -423,9 +588,15 @@ body.snowy {
 
     letter-spacing: -5px;
 
-    background: linear-gradient(135deg, #ffffff, #bae6fd);
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #bae6fd
+        );
 
     -webkit-background-clip: text;
+
     background-clip: text;
 
     color: transparent;
@@ -434,7 +605,8 @@ body.snowy {
 .temperature-area p {
     margin-top: 12px;
 
-    color: rgba(226, 232, 240, 0.68);
+    color:
+        rgba(226, 232, 240, 0.68);
 
     font-size: 1rem;
 
@@ -449,7 +621,8 @@ body.snowy {
 .weather-details {
     display: grid;
 
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
 
     gap: 14px;
 
@@ -466,16 +639,23 @@ body.snowy {
 
     border-radius: 18px;
 
-    background: rgba(4, 14, 27, 0.24);
+    background:
+        rgba(4, 14, 27, 0.24);
 
-    border: 1px solid rgba(255, 255, 255, 0.075);
+    border:
+        1px solid rgba(255, 255, 255, 0.075);
 
-    transition: transform 0.25s ease, background 0.25s ease;
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
 }
 
 .detail:hover {
-    transform: translateY(-3px);
-    background: rgba(255, 255, 255, 0.09);
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(255, 255, 255, 0.09);
 }
 
 .detail-icon {
@@ -489,19 +669,24 @@ body.snowy {
 
     border-radius: 13px;
 
-    background: rgba(255, 255, 255, 0.07);
+    background:
+        rgba(255, 255, 255, 0.07);
 
     font-size: 19px;
 }
 
 .detail-info p {
-    color: rgba(226, 232, 240, 0.55);
+    color:
+        rgba(226, 232, 240, 0.55);
+
     font-size: 0.78rem;
+
     margin-bottom: 4px;
 }
 
 .detail-info strong {
     font-size: 1rem;
+
     font-weight: 700;
 }
 
@@ -512,35 +697,52 @@ body.snowy {
 
 .forecast-section {
     width: 100%;
+
     padding: 26px;
+
     border-radius: 28px;
 
-    background: rgba(255, 255, 255, 0.065);
+    background:
+        rgba(255, 255, 255, 0.065);
 
-    border: 1px solid rgba(255, 255, 255, 0.11);
+    border:
+        1px solid rgba(255, 255, 255, 0.11);
 
-    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.18);
+    box-shadow:
+        0 20px 55px
+        rgba(0, 0, 0, 0.18);
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
 }
 
 .section-heading {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     margin-bottom: 20px;
 }
 
 .section-label {
-    color: rgba(125, 211, 252, 0.72);
+    color:
+        rgba(125, 211, 252, 0.72);
+
     font-size: 0.72rem;
+
     font-weight: 800;
+
     letter-spacing: 1.5px;
 }
 
 .section-heading h2 {
     margin-top: 4px;
+
     font-size: 1.45rem;
 }
 
@@ -549,11 +751,13 @@ body.snowy {
     height: 44px;
 
     display: grid;
+
     place-items: center;
 
     border-radius: 14px;
 
-    background: rgba(56, 189, 248, 0.1);
+    background:
+        rgba(56, 189, 248, 0.1);
 
     font-size: 19px;
 }
@@ -568,7 +772,8 @@ body.snowy {
 
     display: grid;
 
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
 
     gap: 12px;
 }
@@ -582,28 +787,35 @@ body.snowy {
 
     border-radius: 20px;
 
-    background: rgba(3, 13, 26, 0.27);
+    background:
+        rgba(3, 13, 26, 0.27);
 
-    border: 1px solid rgba(255, 255, 255, 0.075);
+    border:
+        1px solid rgba(255, 255, 255, 0.075);
 
     transition:
         transform 0.3s ease,
         background 0.3s ease,
         border-color 0.3s ease;
 
-    animation: forecastAppear 0.6s ease both;
+    animation:
+        forecastAppear 0.6s ease both;
 }
 
 .forecast-card:hover {
-    transform: translateY(-7px);
+    transform:
+        translateY(-7px);
 
-    background: rgba(255, 255, 255, 0.095);
+    background:
+        rgba(255, 255, 255, 0.095);
 
-    border-color: rgba(125, 211, 252, 0.25);
+    border-color:
+        rgba(125, 211, 252, 0.25);
 }
 
 .forecast-card h3 {
-    color: rgba(226, 232, 240, 0.7);
+    color:
+        rgba(226, 232, 240, 0.7);
 
     font-size: 0.82rem;
 
@@ -615,7 +827,9 @@ body.snowy {
 
     margin-bottom: 13px;
 
-    animation: floatingIcon 4s ease-in-out infinite;
+    animation:
+        floatingIcon 4s
+        ease-in-out infinite;
 }
 
 .forecast-card p {
@@ -627,7 +841,8 @@ body.snowy {
 }
 
 .forecast-card span {
-    color: rgba(226, 232, 240, 0.52);
+    color:
+        rgba(226, 232, 240, 0.52);
 
     font-size: 0.72rem;
 
@@ -643,20 +858,24 @@ body.snowy {
 
 .app-footer {
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     gap: 9px;
 
     padding: 3px 0 10px;
 
-    color: rgba(226, 232, 240, 0.4);
+    color:
+        rgba(226, 232, 240, 0.4);
 
     font-size: 0.72rem;
 }
 
 .footer-dot {
-    color: rgba(125, 211, 252, 0.5);
+    color:
+        rgba(125, 211, 252, 0.5);
 }
 
 
@@ -668,11 +887,15 @@ body.snowy {
 
     0%,
     100% {
-        transform: translateY(0) scale(1);
+        transform:
+            translateY(0)
+            scale(1);
     }
 
     50% {
-        transform: translateY(-8px) scale(1.04);
+        transform:
+            translateY(-8px)
+            scale(1.04);
     }
 }
 
@@ -680,12 +903,16 @@ body.snowy {
 
     from {
         opacity: 0;
-        transform: translateY(20px);
+
+        transform:
+            translateY(20px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 }
 
@@ -693,65 +920,16 @@ body.snowy {
 
     from {
         opacity: 0;
-        transform: translateY(20px);
+
+        transform:
+            translateY(20px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
-    }
-}
 
-
-/* =========================================
-   ROCKET FIX 🚀
-========================================= */
-
-.rocket {
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, 80px);
-
-    font-size: 32px;
-
-    z-index: 10;
-
-    opacity: 0;
-
-    pointer-events: none;
-}
-
-.rocket.launch {
-    animation: rocketLaunch 1.5s ease-in-out forwards;
-}
-
-@keyframes rocketLaunch {
-
-    0% {
-        opacity: 0;
-        transform: translate(-50%, 80px) rotate(0deg);
-    }
-
-    15% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 1;
-        transform: translate(-50%, -40px) rotate(-8deg);
-    }
-
-    75% {
-        opacity: 1;
-        transform: translate(-50%, -100px) rotate(-12deg);
-    }
-
-    100% {
-        opacity: 0;
-        transform: translate(-50%, -180px) rotate(-18deg);
+        transform:
+            translateY(0);
     }
 }
 
@@ -774,7 +952,9 @@ body.sunny::after {
 
     pointer-events: none;
 
-    animation: floatingIcon 5s ease-in-out infinite;
+    animation:
+        floatingIcon 5s
+        ease-in-out infinite;
 }
 
 body.cloudy::after {
@@ -791,7 +971,9 @@ body.cloudy::after {
 
     pointer-events: none;
 
-    animation: floatingIcon 6s ease-in-out infinite;
+    animation:
+        floatingIcon 6s
+        ease-in-out infinite;
 }
 
 body.rainy::after {
@@ -808,7 +990,47 @@ body.rainy::after {
 
     pointer-events: none;
 
-    animation: floatingIcon 3s ease-in-out infinite;
+    animation:
+        floatingIcon 3s
+        ease-in-out infinite;
+}
+
+body.stormy::after {
+    content: "⛈️";
+
+    position: fixed;
+
+    top: 10%;
+    right: 8%;
+
+    font-size: 85px;
+
+    opacity: 0.13;
+
+    pointer-events: none;
+
+    animation:
+        floatingIcon 2s
+        ease-in-out infinite;
+}
+
+body.snowy::after {
+    content: "❄️";
+
+    position: fixed;
+
+    top: 10%;
+    right: 8%;
+
+    font-size: 85px;
+
+    opacity: 0.13;
+
+    pointer-events: none;
+
+    animation:
+        floatingIcon 4s
+        ease-in-out infinite;
 }
 
 
@@ -820,11 +1042,13 @@ body.rainy::after {
 
     .weather-container {
         width: min(94%, 700px);
+
         margin: 24px auto;
     }
 
     .forecast-container {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
     }
 }
 
@@ -836,9 +1060,27 @@ body.rainy::after {
 @media (max-width: 600px) {
 
     .weather-container {
-        width: calc(100% - 22px);
+        width:
+            calc(100% - 22px);
+
         margin: 16px auto;
+
         gap: 16px;
+    }
+
+    .brand-icon {
+        width: 46px;
+        height: 46px;
+
+        font-size: 22px;
+    }
+
+    .brand h1 {
+        font-size: 1.35rem;
+    }
+
+    .brand p {
+        font-size: 0.76rem;
     }
 
     .search-box {
@@ -851,18 +1093,26 @@ body.rainy::after {
         border-radius: 18px;
     }
 
+    .search-icon {
+        width: 34px;
+    }
+
     .search-box input {
-        flex: 1 1 calc(100% - 60px);
+        flex:
+            1 1 calc(100% - 60px);
+
         padding: 12px 2px;
     }
 
     .search-button {
         width: 100%;
+
         min-width: 0;
     }
 
     .weather-result {
         padding: 22px;
+
         border-radius: 24px;
     }
 
@@ -881,7 +1131,12 @@ body.rainy::after {
 
     .temperature-area h3 {
         font-size: 4rem;
+
         letter-spacing: -3px;
+    }
+
+    .temperature-area p {
+        font-size: 0.85rem;
     }
 
     .weather-details {
@@ -890,15 +1145,22 @@ body.rainy::after {
 
     .forecast-section {
         padding: 20px;
+
         border-radius: 24px;
     }
 
     .forecast-container {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .rocket {
+        font-size: 30px;
     }
 
     .app-footer {
         flex-wrap: wrap;
+
         text-align: center;
     }
 }
@@ -912,6 +1174,7 @@ body.rainy::after {
 
     .weather-display {
         flex-direction: column;
+
         align-items: flex-start;
     }
 
