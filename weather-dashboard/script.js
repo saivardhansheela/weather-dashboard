@@ -263,17 +263,15 @@ async function getWeather() {
         // ROCKET LAUNCH
         // ================================
 
-        const rocket =
-            document.querySelector(".rocket");
+        const rocket = document.querySelector(".rocket");
 
-        if (rocket) {
+if (rocket) {
+    rocket.classList.remove("launch");
 
-            rocket.style.animation = "none";
+    void rocket.offsetWidth;
 
-            void rocket.offsetWidth;
-
-            rocket.style.animation =
-                "rocketLaunch 3s ease-in-out";
+    rocket.classList.add("launch");
+}
 
         }
 
