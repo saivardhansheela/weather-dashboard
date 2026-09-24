@@ -48,17 +48,31 @@ async function getWeather() {
         // CURRENT WEATHER ELEMENTS
         // ================================
 
-        const cityName = document.getElementById("cityName");
-        const temperature = document.getElementById("temperature");
-        const description = document.getElementById("description");
-        const humidity = document.getElementById("humidity");
-        const wind = document.getElementById("wind");
-        const feelsLike = document.getElementById("feelsLike");
-        const weatherIcon = document.getElementById("weatherIcon");
+        const cityName =
+            document.getElementById("cityName");
+
+        const temperature =
+            document.getElementById("temperature");
+
+        const description =
+            document.getElementById("description");
+
+        const humidity =
+            document.getElementById("humidity");
+
+        const wind =
+            document.getElementById("wind");
+
+        const feelsLike =
+            document.getElementById("feelsLike");
+
+        const weatherIcon =
+            document.getElementById("weatherIcon");
 
 
         if (cityName) {
-            cityName.textContent = currentData.name;
+            cityName.textContent =
+                currentData.name;
         }
 
         if (temperature) {
@@ -95,6 +109,7 @@ async function getWeather() {
             currentData.weather[0].main;
 
         const icons = {
+
             Clear: "☀️",
             Clouds: "☁️",
             Rain: "🌧️",
@@ -104,13 +119,15 @@ async function getWeather() {
             Mist: "🌫️",
             Haze: "🌫️",
             Fog: "🌫️"
+
         };
 
+
         if (weatherIcon) {
+
             weatherIcon.textContent =
                 icons[condition] || "🌤️";
 
-            // Restart icon animation
             weatherIcon.style.animation = "none";
 
             void weatherIcon.offsetWidth;
@@ -132,32 +149,42 @@ async function getWeather() {
             "snowy"
         );
 
+
         if (condition === "Clear") {
 
             document.body.classList.add("sunny");
 
-        } else if (
+        }
+
+        else if (
             condition === "Rain" ||
             condition === "Drizzle"
         ) {
 
             document.body.classList.add("rainy");
 
-        } else if (
+        }
+
+        else if (
             condition === "Thunderstorm"
         ) {
 
             document.body.classList.add("stormy");
 
-        } else if (
+        }
+
+        else if (
             condition === "Snow"
         ) {
 
             document.body.classList.add("snowy");
 
-        } else {
+        }
+
+        else {
 
             document.body.classList.add("cloudy");
+
         }
 
 
@@ -165,80 +192,113 @@ async function getWeather() {
         // 5 DAY FORECAST
         // ================================
 
+        // IMPORTANT:
+        // HTML uses forecastContainer
+
         const forecastContainer =
-            document.getElementById("forecast");
+            document.getElementById("forecastContainer");
+
 
         if (!forecastContainer) {
-            console.log("Forecast container not found");
-            return;
+
+            console.log(
+                "Forecast container not found"
+            );
+
         }
 
-        forecastContainer.innerHTML = "";
+        else {
+
+            forecastContainer.innerHTML = "";
 
 
-        const dailyForecast = {};
-
-        forecastData.list.forEach(item => {
-
-            const date = new Date(item.dt * 1000);
-
-            const dateKey =
-                date.toISOString().split("T")[0];
-
-            if (!dailyForecast[dateKey]) {
-                dailyForecast[dateKey] = item;
-            }
-
-        });
+            const dailyForecast = {};
 
 
-        const forecastDays =
-            Object.values(dailyForecast).slice(0, 5);
+            forecastData.list.forEach(item => {
+
+                const date =
+                    new Date(item.dt * 1000);
+
+                const dateKey =
+                    date.toISOString().split("T")[0];
 
 
-        forecastDays.forEach((item, index) => {
+                if (!dailyForecast[dateKey]) {
 
-            const date =
-                new Date(item.dt * 1000);
+                    dailyForecast[dateKey] = item;
 
-            const day =
-                date.toLocaleDateString("en-US", {
-                    weekday: "short"
-                });
+                }
 
-            const forecastCondition =
-                item.weather[0].main;
+            });
 
-            const forecastIcon =
-                icons[forecastCondition] || "🌤️";
 
-            const card =
-                document.createElement("div");
+            const forecastDays =
+                Object.values(dailyForecast).slice(0, 5);
 
-            card.className = "forecast-card";
 
-            card.style.animation =
-                `forecastAppear 0.6s ease ${index * 0.15}s both`;
+            forecastDays.forEach(
+                (item, index) => {
 
-            card.innerHTML = `
-                <h3>${day}</h3>
+                    const date =
+                        new Date(item.dt * 1000);
 
-                <div class="forecast-icon">
-                    ${forecastIcon}
-                </div>
 
-                <p>
-                    ${Math.round(item.main.temp)}°C
-                </p>
+                    const day =
+                        date.toLocaleDateString(
+                            "en-US",
+                            {
+                                weekday: "short"
+                            }
+                        );
 
-                <span>
-                    ${item.weather[0].description}
-                </span>
-            `;
 
-            forecastContainer.appendChild(card);
+                    const forecastCondition =
+                        item.weather[0].main;
 
-        });
+
+                    const forecastIcon =
+                        icons[forecastCondition] ||
+                        "🌤️";
+
+
+                    const card =
+                        document.createElement("div");
+
+
+                    card.className =
+                        "forecast-card";
+
+
+                    card.style.animation =
+                        `forecastAppear 0.6s ease ${index * 0.15}s both`;
+
+
+                    card.innerHTML = `
+
+                        <h3>${day}</h3>
+
+                        <div class="forecast-icon">
+                            ${forecastIcon}
+                        </div>
+
+                        <p>
+                            ${Math.round(item.main.temp)}°C
+                        </p>
+
+                        <span>
+                            ${item.weather[0].description}
+                        </span>
+
+                    `;
+
+
+                    forecastContainer.appendChild(card);
+
+                }
+            );
+
+        }
 
 
         // ================================
@@ -248,6 +308,7 @@ async function getWeather() {
         const weatherDisplay =
             document.querySelector(".weather-display");
 
+
         if (weatherDisplay) {
 
             weatherDisplay.style.animation = "none";
@@ -256,25 +317,32 @@ async function getWeather() {
 
             weatherDisplay.style.animation =
                 "weatherFloat 0.8s ease";
+
         }
 
 
         // ================================
-        // ROCKET LAUNCH
+        // ROCKET LAUNCH 🚀
         // ================================
 
-        const rocket = document.querySelector(".rocket");
+        const rocket =
+            document.querySelector(".rocket");
 
-if (rocket) {
-    rocket.classList.remove("launch");
 
-    void rocket.offsetWidth;
+        if (rocket) {
 
-    rocket.classList.add("launch");
-}
+            rocket.classList.remove("launch");
+
+            void rocket.offsetWidth;
+
+            rocket.classList.add("launch");
 
         }
 
+
+        // ================================
+        // SUCCESS MESSAGE
+        // ================================
 
         console.log(
             `Weather loaded successfully for ${currentData.name}`
@@ -282,11 +350,18 @@ if (rocket) {
 
     }
 
+
     catch (error) {
 
-        console.error("Weather Error:", error);
+        console.error(
+            "Weather Error:",
+            error
+        );
 
-        alert(error.message || "Something went wrong");
+        alert(
+            error.message ||
+            "Something went wrong"
+        );
 
     }
 
