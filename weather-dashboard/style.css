@@ -511,4 +511,420 @@ body.snowy {
 ========================================= */
 
 .forecast-section {
-    width:
+    width: 100%;
+    padding: 26px;
+    border-radius: 28px;
+
+    background: rgba(255, 255, 255, 0.065);
+
+    border: 1px solid rgba(255, 255, 255, 0.11);
+
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.18);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.section-label {
+    color: rgba(125, 211, 252, 0.72);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.section-heading h2 {
+    margin-top: 4px;
+    font-size: 1.45rem;
+}
+
+.forecast-symbol {
+    width: 44px;
+    height: 44px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 14px;
+
+    background: rgba(56, 189, 248, 0.1);
+
+    font-size: 19px;
+}
+
+
+/* =========================================
+   FORECAST GRID
+========================================= */
+
+.forecast-container {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+.forecast-card {
+    min-width: 0;
+
+    padding: 20px 12px;
+
+    text-align: center;
+
+    border-radius: 20px;
+
+    background: rgba(3, 13, 26, 0.27);
+
+    border: 1px solid rgba(255, 255, 255, 0.075);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease;
+
+    animation: forecastAppear 0.6s ease both;
+}
+
+.forecast-card:hover {
+    transform: translateY(-7px);
+
+    background: rgba(255, 255, 255, 0.095);
+
+    border-color: rgba(125, 211, 252, 0.25);
+}
+
+.forecast-card h3 {
+    color: rgba(226, 232, 240, 0.7);
+
+    font-size: 0.82rem;
+
+    margin-bottom: 14px;
+}
+
+.forecast-icon {
+    font-size: 38px;
+
+    margin-bottom: 13px;
+
+    animation: floatingIcon 4s ease-in-out infinite;
+}
+
+.forecast-card p {
+    font-size: 1.3rem;
+
+    font-weight: 800;
+
+    margin-bottom: 7px;
+}
+
+.forecast-card span {
+    color: rgba(226, 232, 240, 0.52);
+
+    font-size: 0.72rem;
+
+    line-height: 1.35;
+
+    text-transform: capitalize;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.app-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    padding: 3px 0 10px;
+
+    color: rgba(226, 232, 240, 0.4);
+
+    font-size: 0.72rem;
+}
+
+.footer-dot {
+    color: rgba(125, 211, 252, 0.5);
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes floatingIcon {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-8px) scale(1.04);
+    }
+}
+
+@keyframes weatherFloat {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes forecastAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================
+   ROCKET FIX 🚀
+========================================= */
+
+.rocket {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, 80px);
+
+    font-size: 32px;
+
+    z-index: 10;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+.rocket.launch {
+    animation: rocketLaunch 1.5s ease-in-out forwards;
+}
+
+@keyframes rocketLaunch {
+
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 80px) rotate(0deg);
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -40px) rotate(-8deg);
+    }
+
+    75% {
+        opacity: 1;
+        transform: translate(-50%, -100px) rotate(-12deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -180px) rotate(-18deg);
+    }
+}
+
+
+/* =========================================
+   WEATHER EFFECTS
+========================================= */
+
+body.sunny::after {
+    content: "☀️";
+
+    position: fixed;
+
+    top: 8%;
+    right: 7%;
+
+    font-size: 80px;
+
+    opacity: 0.12;
+
+    pointer-events: none;
+
+    animation: floatingIcon 5s ease-in-out infinite;
+}
+
+body.cloudy::after {
+    content: "☁️";
+
+    position: fixed;
+
+    top: 10%;
+    right: 8%;
+
+    font-size: 90px;
+
+    opacity: 0.12;
+
+    pointer-events: none;
+
+    animation: floatingIcon 6s ease-in-out infinite;
+}
+
+body.rainy::after {
+    content: "🌧️";
+
+    position: fixed;
+
+    top: 10%;
+    right: 8%;
+
+    font-size: 85px;
+
+    opacity: 0.12;
+
+    pointer-events: none;
+
+    animation: floatingIcon 3s ease-in-out infinite;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 850px) {
+
+    .weather-container {
+        width: min(94%, 700px);
+        margin: 24px auto;
+    }
+
+    .forecast-container {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .weather-container {
+        width: calc(100% - 22px);
+        margin: 16px auto;
+        gap: 16px;
+    }
+
+    .search-box {
+        min-height: auto;
+
+        flex-wrap: wrap;
+
+        padding: 8px;
+
+        border-radius: 18px;
+    }
+
+    .search-box input {
+        flex: 1 1 calc(100% - 60px);
+        padding: 12px 2px;
+    }
+
+    .search-button {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .weather-result {
+        padding: 22px;
+        border-radius: 24px;
+    }
+
+    .weather-display {
+        gap: 18px;
+    }
+
+    .weather-icon {
+        width: 90px;
+        height: 90px;
+
+        border-radius: 24px;
+
+        font-size: 48px;
+    }
+
+    .temperature-area h3 {
+        font-size: 4rem;
+        letter-spacing: -3px;
+    }
+
+    .weather-details {
+        grid-template-columns: 1fr;
+    }
+
+    .forecast-section {
+        padding: 20px;
+        border-radius: 24px;
+    }
+
+    .forecast-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .app-footer {
+        flex-wrap: wrap;
+        text-align: center;
+    }
+}
+
+
+/* =========================================
+   VERY SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+
+    .weather-display {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .weather-icon {
+        width: 82px;
+        height: 82px;
+    }
+
+    .temperature-area h3 {
+        font-size: 3.5rem;
+    }
+
+    .forecast-container {
+        grid-template-columns: 1fr;
+    }
+}
