@@ -118,6 +118,67 @@ body.snowy {
     font-weight: 750;
     letter-spacing: -0.7px;
 }
+/* =========================================
+   ROCKET SEARCH ANIMATION 🚀
+========================================= */
+
+.search-button {
+    position: relative;
+    overflow: visible !important;
+    isolation: isolate;
+}
+
+.rocket {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    font-size: 32px;
+    line-height: 1;
+
+    z-index: 9999;
+    pointer-events: none;
+
+    opacity: 0;
+
+    transform: translate(-50%, 80px) rotate(0deg);
+}
+
+.rocket.launch {
+    animation: rocketLaunch 1.5s ease-in-out forwards;
+}
+
+@keyframes rocketLaunch {
+
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 80px) rotate(0deg);
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    30% {
+        opacity: 1;
+        transform: translate(-50%, 20px) rotate(-5deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -45px) rotate(-8deg);
+    }
+
+    75% {
+        opacity: 1;
+        transform: translate(-50%, -110px) rotate(-12deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -190px) rotate(-18deg);
+    }
+}
 
 .brand p {
     margin-top: 3px;
