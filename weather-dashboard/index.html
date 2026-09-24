@@ -1,64 +1,220 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Weather Dashboard</title>
 
-    <link rel="stylesheet" href="style.css">
-</head>
+<link rel="stylesheet" href="style.css">
 
-<body>
+</head><body><!-- UI UPDATE TEST -->
+<div id="uiTest"
+    style="
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 99999;
+        background: red;
+        color: white;
+        padding: 10px 14px;
+        border-radius: 8px;
+        font-weight: bold;
+        font-family: Arial, sans-serif;
+    ">
+    NEW UI TEST
+</div>
 
-    <div class="weather-container">
 
-        <h1>🌦️ Weather Dashboard</h1>
+<main class="weather-container">
+
+    <!-- Header -->
+    <header class="app-header">
+
+        <div class="brand">
+            <div class="brand-icon">🌤️</div>
+
+            <div>
+                <h1>Weather Dashboard</h1>
+                <p>Live weather. Anywhere, anytime.</p>
+            </div>
+        </div>
+
+    </header>
+
+
+    <!-- Search -->
+    <section class="search-section">
 
         <div class="search-box">
-            <input 
-                type="text" 
-                id="cityInput" 
-                placeholder="Enter city name"
+
+            <span class="search-icon">⌕</span>
+
+            <input
+                type="text"
+                id="cityInput"
+                placeholder="Search for a city..."
+                autocomplete="off"
             >
 
-            <button onclick="getWeather()">
-                Search
+            <button
+                type="button"
+                onclick="getWeather()"
+                class="search-button"
+            >
+                <span class="button-text">Search</span>
+                <span class="rocket">🚀</span>
             </button>
+
         </div>
 
-        <div id="weatherResult" class="weather-result">
+    </section>
 
-            <h2 id="cityName">Search for a city</h2>
 
-            <div class="weather-icon" id="weatherIcon">
-                🌤️
+    <!-- Current Weather -->
+    <section id="weatherResult" class="weather-result">
+
+        <div class="weather-main">
+
+            <div class="location-info">
+
+                <span class="location-pin">📍</span>
+
+                <div>
+                    <p class="location-label">Current Weather</p>
+
+                    <h2 id="cityName">
+                        Search for a city
+                    </h2>
+                </div>
+
             </div>
 
-            <h3 id="temperature">--°C</h3>
 
-            <p id="description">Weather information will appear here</p>
+            <div class="weather-display">
 
-            <div class="weather-details">
+                <div
+                    class="weather-icon"
+                    id="weatherIcon"
+                >
+                    🌤️
+                </div>
 
-                <div class="detail">
-                    <span>💧</span>
+                <div class="temperature-area">
+
+                    <h3 id="temperature">
+                        --°C
+                    </h3>
+
+                    <p id="description">
+                        Weather information will appear here
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Weather Details -->
+        <div class="weather-details">
+
+            <div class="detail">
+
+                <div class="detail-icon humidity-icon">
+                    💧
+                </div>
+
+                <div class="detail-info">
                     <p>Humidity</p>
-                    <strong id="humidity">--%</strong>
+
+                    <strong id="humidity">
+                        --%
+                    </strong>
                 </div>
 
-                <div class="detail">
-                    <span>💨</span>
+            </div>
+
+
+            <div class="detail">
+
+                <div class="detail-icon wind-icon">
+                    💨
+                </div>
+
+                <div class="detail-info">
                     <p>Wind Speed</p>
-                    <strong id="wind">-- km/h</strong>
+
+                    <strong id="wind">
+                        -- km/h
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="detail">
+
+                <div class="detail-icon feels-icon">
+                    🌡️
+                </div>
+
+                <div class="detail-info">
+                    <p>Feels Like</p>
+
+                    <strong id="feelsLike">
+                        --°C
+                    </strong>
                 </div>
 
             </div>
 
         </div>
 
-    </div>
+    </section>
 
-    <script src="script.js"></script>
 
-</body>
-</html>
+    <!-- Forecast -->
+    <section class="forecast-section">
+
+        <div class="section-heading">
+
+            <div>
+                <p class="section-label">
+                    WEEK AHEAD
+                </p>
+
+                <h2>
+                    5-Day Forecast
+                </h2>
+            </div>
+
+            <span class="forecast-symbol">
+                📅
+            </span>
+
+        </div>
+
+
+        <div
+            id="forecastContainer"
+            class="forecast-container"
+        ></div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="app-footer">
+
+        <span>Powered by OpenWeather</span>
+
+        <span class="footer-dot">•</span>
+
+        <span>Weather Dashboard</span>
+
+    </footer>
+
+</main>
+
+
+<script src="script.js"></script>
+
+</body></html>

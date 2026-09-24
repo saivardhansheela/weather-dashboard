@@ -13,7 +13,7 @@ async function getWeather() {
         // Current weather API
 
         const currentURL =
-            `/api/weather?city=${encodeURIComponent(city)}';
+            `/api/weather?city=${encodeURIComponent(city)}`;
 
 
         // 5-day forecast API
