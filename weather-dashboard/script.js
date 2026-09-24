@@ -1,3 +1,18 @@
+function launchRocket() {
+
+    const rocket = document.querySelector(".rocket");
+
+    if (!rocket) return;
+
+    rocket.classList.remove("launch");
+
+    // Restart animation
+    void rocket.offsetWidth;
+
+    rocket.classList.add("launch");
+}
+
+
 async function getWeather() {
 
     const cityInput = document.getElementById("cityInput");
@@ -8,45 +23,59 @@ async function getWeather() {
         return;
     }
 
+    // 🚀 LAUNCH IMMEDIATELY WHEN SEARCH IS CLICKED
+    launchRocket();
+
     try {
 
-        // ================================
+        // =====================================
         // CURRENT WEATHER
-        // ================================
+        // =====================================
 
         const currentURL =
             `/api/weather?city=${encodeURIComponent(city)}`;
 
-        const currentResponse = await fetch(currentURL);
-        const currentData = await currentResponse.json();
+        const currentResponse =
+            await fetch(currentURL);
+
+        const currentData =
+            await currentResponse.json();
 
         if (!currentResponse.ok) {
+
             throw new Error(
                 currentData.message || "City not found"
             );
+
         }
 
 
-        // ================================
+        // =====================================
         // FORECAST
-        // ================================
+        // =====================================
 
         const forecastURL =
             `/api/forecast?city=${encodeURIComponent(city)}`;
 
-        const forecastResponse = await fetch(forecastURL);
-        const forecastData = await forecastResponse.json();
+        const forecastResponse =
+            await fetch(forecastURL);
+
+        const forecastData =
+            await forecastResponse.json();
 
         if (!forecastResponse.ok) {
+
             throw new Error(
-                forecastData.message || "Forecast unavailable"
+                forecastData.message ||
+                "Forecast unavailable"
             );
+
         }
 
 
-        // ================================
-        // CURRENT WEATHER ELEMENTS
-        // ================================
+        // =====================================
+        // ELEMENTS
+        // =====================================
 
         const cityName =
             document.getElementById("cityName");
@@ -70,43 +99,65 @@ async function getWeather() {
             document.getElementById("weatherIcon");
 
 
+        // =====================================
+        // DISPLAY CURRENT WEATHER
+        // =====================================
+
         if (cityName) {
+
             cityName.textContent =
                 currentData.name;
+
         }
+
 
         if (temperature) {
+
             temperature.textContent =
                 `${Math.round(currentData.main.temp)}°C`;
+
         }
+
 
         if (description) {
+
             description.textContent =
                 currentData.weather[0].description;
+
         }
+
 
         if (humidity) {
+
             humidity.textContent =
                 `${currentData.main.humidity}%`;
+
         }
+
 
         if (wind) {
+
             wind.textContent =
                 `${(currentData.wind.speed * 3.6).toFixed(1)} km/h`;
+
         }
+
 
         if (feelsLike) {
+
             feelsLike.textContent =
                 `${Math.round(currentData.main.feels_like)}°C`;
+
         }
 
 
-        // ================================
+        // =====================================
         // WEATHER ICON
-        // ================================
+        // =====================================
 
         const condition =
             currentData.weather[0].main;
+
 
         const icons = {
 
@@ -134,12 +185,13 @@ async function getWeather() {
 
             weatherIcon.style.animation =
                 "floatingIcon 3s ease-in-out infinite";
+
         }
 
 
-        // ================================
+        // =====================================
         // DYNAMIC BACKGROUND
-        // ================================
+        // =====================================
 
         document.body.classList.remove(
             "sunny",
@@ -188,26 +240,15 @@ async function getWeather() {
         }
 
 
-        // ================================
+        // =====================================
         // 5 DAY FORECAST
-        // ================================
-
-        // IMPORTANT:
-        // HTML uses forecastContainer
+        // =====================================
 
         const forecastContainer =
             document.getElementById("forecastContainer");
 
 
-        if (!forecastContainer) {
-
-            console.log(
-                "Forecast container not found"
-            );
-
-        }
-
-        else {
+        if (forecastContainer) {
 
             forecastContainer.innerHTML = "";
 
@@ -301,9 +342,9 @@ async function getWeather() {
         }
 
 
-        // ================================
+        // =====================================
         // WEATHER CARD ANIMATION
-        // ================================
+        // =====================================
 
         const weatherDisplay =
             document.querySelector(".weather-display");
@@ -321,28 +362,9 @@ async function getWeather() {
         }
 
 
-        // ================================
-        // ROCKET LAUNCH 🚀
-        // ================================
-
-        const rocket =
-            document.querySelector(".rocket");
-
-
-        if (rocket) {
-
-            rocket.classList.remove("launch");
-
-            void rocket.offsetWidth;
-
-            rocket.classList.add("launch");
-
-        }
-
-
-        // ================================
-        // SUCCESS MESSAGE
-        // ================================
+        // =====================================
+        // SUCCESS
+        // =====================================
 
         console.log(
             `Weather loaded successfully for ${currentData.name}`
